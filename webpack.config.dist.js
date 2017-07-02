@@ -11,14 +11,14 @@ module.exports = {
   },
 
   module: {
-    loaders: [
-      {test: /\.jsx$/, loaders: ['babel']},
-      {test: /\.js$/, loaders: ['babel'], exclude: /node_modules/}
+    rules: [
+      {test: /\.jsx$/, loader: require.resolve('babel-loader')},
+      {test: /\.js$/, loader: require.resolve('babel-loader'), exclude: /node_modules/}
     ]
   },
 
   resolve: {
-    extensions: ['', '.js', '.jsx']
+    extensions: [.js', '.jsx']
   },
 
   externals: [
