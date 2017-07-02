@@ -15,10 +15,13 @@ module.exports = {
         path: path.join(__dirname, 'build'),
         filename: '[name]'
     },
+    resolve: {
+        extensions: ['.js', '.jsx']
+    },
     module: {
         rules: [
-            { test: /\.jsx$/, loaders: ['babel'] },
-            { test: /\.js$/, loaders: ['babel'], exclude: /node_modules/ },
+            { test: /\.jsx$/, loader: require.resolve('babel-loader') },
+            { test: /\.js$/, loader: require.resolve('babel-loader'), exclude: /node_modules/ },
             {
                 test: /\.scss$/,
                 use: [
@@ -44,9 +47,6 @@ module.exports = {
                 use: [require.resolve('html-loader'), require.resolve('markdown-loader')]
             }
         ]
-    },
-    resolve: {
-        extensions: ['.js', '.jsx']
     },
     plugins: [
         // new webpack.HotModuleReplacementPlugin(),
